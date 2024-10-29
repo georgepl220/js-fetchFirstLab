@@ -7,10 +7,28 @@
 "https://jsonplaceholder.typicode.com/users - адреса куди робити запит"
 
 
-function createUser(user) {
-  // Ваш код
+async function createUser(user) {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: user.name,
+        email: user.email
+      })
+    });
+
+    // Перетворюємо відповідь в JSON і повертаємо її
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error creating user:", error);
+    return null;
+  }
 }
 
-console.log(createUser({name: "Sam", email: "fjsnfkjns2342@gmail.com"}))
+console.log(createUser({ name: "Sam", email: "fjsnfkjns2342@gmail.com" }));
 
 module.exports = createUser;
