@@ -20,7 +20,6 @@ async function createUser(user) {
       })
     });
 
-    // Перетворюємо відповідь в JSON і повертаємо її
     const data = await response.json();
     return data;
   } catch (error) {

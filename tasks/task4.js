@@ -10,11 +10,10 @@ async function deleteUser(id) {
       method: 'DELETE'
     });
 
-    // Повертаємо статус відповіді сервера
     return { status: response.status };
   } catch (error) {
     console.error("Error deleting user:", error);
-    return { status: 500 }; // Повертати 500 для індикації помилки
+    return { status: 500 };
   }
 }
 
